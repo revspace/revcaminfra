@@ -16,7 +16,7 @@ class WebHandler(http.server.BaseHTTPRequestHandler):
 	protocol_version = 'HTTP/1.1'
 	def do_GET(self):
 		out('['+self.path+'] ['+repr(self.client_address)+'] do_GET')
-		if(self.client_address[0] != '10.42.13.84'):
+		if self.client_address[0] != '10.42.19.84':
 			self.send_response(403)
 			self.end_headers()
 			out('['+self.path+'] ['+repr(self.client_address)+'] wrong IP')
