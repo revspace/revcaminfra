@@ -2,7 +2,7 @@
 
 import sys, os, datetime, http.server, socketserver, socket, signal
 
-camNumberToAnalogInput = {7:7, 8:8, 9:6}
+camNumberToAnalogInput = {7:7, 8:8, 9:6, 10:5}
 
 def out(str):
 	print(datetime.datetime.now().strftime('[%Y-%m-%d_%H:%M:%S.%f]'), str)
@@ -16,7 +16,7 @@ class WebHandler(http.server.BaseHTTPRequestHandler):
 	protocol_version = 'HTTP/1.1'
 	def do_GET(self):
 		out('['+self.path+'] ['+repr(self.client_address)+'] do_GET')
-		if self.client_address[0] != '10.42.19.84':
+		if self.client_address[0] not in('10.42.19.84'):
 			self.send_response(403)
 			self.end_headers()
 			out('['+self.path+'] ['+repr(self.client_address)+'] wrong IP')
