@@ -16,7 +16,7 @@ class WebHandler(http.server.BaseHTTPRequestHandler):
 	protocol_version = 'HTTP/1.1'
 	def do_GET(self):
 		out('['+self.path+'] ['+repr(self.client_address)+'] do_GET')
-		if self.client_address[0] not in('10.42.19.84'):
+		if self.client_address[0] not in('10.42.19.84', '127.0.0.1'):
 			self.send_response(403)
 			self.end_headers()
 			out('['+self.path+'] ['+repr(self.client_address)+'] wrong IP')
@@ -51,7 +51,7 @@ def signal_handler(signal, frame):
 
 if __name__ == "__main__":
 	out('begin')
-	server = MyWebServer(('', 8090), WebHandler)
+	server = MyWebServer(('', 9080), WebHandler)
 	out('started httpserver')
 	try:
 		server.serve_forever()
