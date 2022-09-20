@@ -12,7 +12,7 @@ while true;
 	! video/x-raw,width=640,height=480 \
 	! jpegenc  \
 	! multipartmux boundary=RevSpaceCam  \
-	! tcpserversink host=localhost port=900$1;
+	! tcpserversink host=127.0.0.1 port=900$1;
 	echo;
 	echo;
 done 2>&1 | tee -a gst_input$1.log;

@@ -1,0 +1,15 @@
+[Unit]
+Description=analogecams gst.sh 7
+After=multi-user.target
+
+[Service]
+User=analogecams
+WorkingDirectory=/usr/local/analoge-cams-helper-scripts/log
+Type=simple
+Restart=always
+RestartSec=10
+ExecStart=/usr/local/analoge-cams-helper-scripts/gst.sh 7
+TimeoutStopSec=1
+
+[Install]
+WantedBy=multi-user.target
